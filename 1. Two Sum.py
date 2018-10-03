@@ -6,6 +6,9 @@ class Solution:
         :type target: int
         :rtype: List[int]
         """
-        matrix = [[ item1 + item2 for item2 in nums] for item1 in nums]
-        result = [[i, v.index(target)] for i, v in enumerate(matrix) if target in v][0]
-        return result
+        for i in range(len(nums)):
+            for j in range(i+1, len(nums)):
+                sum2 = nums[i] + nums[j]
+                if sum2 == target:
+                    return [i,j]
+        return False
