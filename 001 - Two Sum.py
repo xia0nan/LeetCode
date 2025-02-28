@@ -6,9 +6,9 @@ class Solution:
         :type target: int
         :rtype: List[int]
         """
+        num_to_index = {}
         for i in range(len(nums)):
-            for j in range(i+1, len(nums)):
-                sum2 = nums[i] + nums[j]
-                if sum2 == target:
-                    return [i,j]
-        return False
+            complement = target - nums[i]
+            if complement in num_to_index:
+                return [i, num_to_index[complement]]
+            num_to_index[nums[i]] = i
