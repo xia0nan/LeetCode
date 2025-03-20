@@ -5,10 +5,14 @@ Test cases for Problem 3: Longest Substring Without Repeating Characters
 import sys
 import os
 import pytest
+import importlib
 
 # Add the parent directory to the Python path to import the Solution class
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from longest_substring_003 import Solution
+
+# Use importlib to import a module with a name that starts with a number
+solution_module = importlib.import_module("003_longest_substring")
+Solution = solution_module.Solution
 
 class TestLongestSubstring:
     """Test cases for lengthOfLongestSubstring function"""
@@ -43,7 +47,7 @@ class TestLongestSubstring:
     
     def test_special_characters(self):
         """Test case with spaces and special characters"""
-        assert self.solution.lengthOfLongestSubstring("ab cd!ef") == 7
+        assert self.solution.lengthOfLongestSubstring("ab cd!ef") == 8  # Fixed: Expected 8 instead of 7
     
     def test_multiple_appearances(self):
         """Test case where characters appear multiple times"""
@@ -57,3 +61,7 @@ class TestLongestSubstring:
     def test_unicode_characters(self):
         """Test case with Unicode characters"""
         assert self.solution.lengthOfLongestSubstring("😀🎉😀👍") == 3
+
+
+if __name__ == "__main__":
+    pytest.main(["-v", __file__])
