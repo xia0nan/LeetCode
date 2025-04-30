@@ -2,7 +2,6 @@ import sys
 import os
 import pytest
 import importlib
-import random
 
 """
 Test cases for Problem 1: Two Sum
@@ -74,7 +73,7 @@ class TestTwoSum:
         a, b = 42, 56
         nums.extend([a, b])
         target = a + b
-        expected = [998, 999]
+        # expected = [998, 999]
         
         result = self.solution.twoSum(nums, target)
         # Either check for the exact expected indices:
